@@ -1,11 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
-/**
- * Write a description of class MyWorld here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import java.util.List;
+import java.util.ArrayList;
+
+ 
 public class MyWorld extends World {
     
     private boolean started = false;
@@ -75,16 +73,38 @@ public class MyWorld extends World {
                 break;
         }
         
-        prepare();
+        placeRandomObjects();
+        
     }
     
-    /**
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
-     */
-    private void prepare()
-    {
+    private void placeRandomObjects(){
+    Actor[] objects = {new Ast1(), new Ast2(), new Ufo1(), new Ufo2()};
+    int[][] coordinates = {{375, 255}, {484, 255}, {593, 255}, {703, 255}, {375, 365}, {484, 365}, {593, 365}, {703, 365}, {375, 475}, {484, 475}, {593, 475}, {703, 475}}; // Reemplaza x1, y1, etc. con tus coordenadas
+
+    int numObjects = Greenfoot.getRandomNumber(3) + 3; // Genera un número aleatorio entre 2 y 4
+
+    List<int[]> availableCoordinates = new ArrayList<int[]>();
+    for (int[] coordinate : coordinates) {
+        availableCoordinates.add(coordinate.clone());
     }
+
+    for(int i = 0; i < numObjects; i++)
+    {
+        int randomIndex = Greenfoot.getRandomNumber(objects.length);
+        Actor randomObject = objects[randomIndex];
+
+        if (availableCoordinates.isEmpty()) {
+            break;
+        }
+
+        int randomCoordinateIndex = Greenfoot.getRandomNumber(availableCoordinates.size());
+        int[] randomCoordinate = availableCoordinates.get(randomCoordinateIndex);
+        availableCoordinates.remove(randomCoordinateIndex);
+
+        addObject(randomObject, randomCoordinate[0], randomCoordinate[1]);
+    }
+}
+    
 }
 
 
