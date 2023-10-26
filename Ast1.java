@@ -1,12 +1,7 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  
 
-/**
- * Write a description of class Ast1 here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Ast1 extends Actor
+
+public class Ast1 extends Obstaculo
 {
     /**
      * Act - do whatever the Ast1 wants to do. This method is called whenever
@@ -14,6 +9,5 @@ public class Ast1 extends Actor
      */
     public void act()
     {
-        // Add your action code here.
     }
 }

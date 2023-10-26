@@ -1,19 +1,22 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
+import java.util.List;
 
-/**
- * Write a description of class Suma here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Suma extends Actor
-{
-    /**
-     * Act - do whatever the Suma wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        // Add your action code here.
+public class Suma extends Actor {
+    public void act() {
+        if (Greenfoot.mouseClicked(this)) {
+            Greenfoot.playSound("carta.wav");
+            Nave nave = (Nave) getWorld().getObjects(Nave.class).get(0);
+            int filaActual = nave.getFilaActual();
+            int bitsAcumulados = nave.getBitsAcumulados();
+            bitsAcumulados = (bitsAcumulados + 1) % 16;  
+            
+            MyWorld world = (MyWorld) getWorld();
+            world.getContadores()[filaActual] = bitsAcumulados;
+            nave.setBitsAcumulados(bitsAcumulados);
+            world.actualizarBitsEnEscenario();
+            
+            world.actualizarTexto();
+            world.reducirTiempo(100);
+        }
     }
 }

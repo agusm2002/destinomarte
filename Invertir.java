@@ -1,19 +1,30 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*; 
 
-/**
- * Write a description of class Invertir here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Invertir extends Actor
-{
-    /**
-     * Act - do whatever the Invertir wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        // Add your action code here.
+public class Invertir extends Actor {
+    public void act() {
+        if (Greenfoot.mouseClicked(this)) {
+            Greenfoot.playSound("carta.wav");
+            MyWorld world = (MyWorld) getWorld();
+            Nave nave = world.getObjects(Nave.class).get(0);
+            invertirBits(nave);
+            world.reducirTiempo(50);
+        }
+        MyWorld world = (MyWorld) getWorld();
+        world.actualizarBitsEnEscenario();
+    }
+    
+    private void invertirBits(Nave nave) {
+        int filaActual = nave.getFilaActual();
+        int bitsAcumulados = nave.getBitsAcumulados();
+        
+        int bitsInvertidos = ~bitsAcumulados;
+        bitsInvertidos &= 15;
+        
+        nave.setBitsAcumulados(bitsInvertidos);
+        
+        MyWorld world = (MyWorld) getWorld();
+        world.actualizarBitsEnEscenario();
+        world.actualizarTexto();
+        world.getContadores()[filaActual] = bitsInvertidos;
     }
 }

@@ -1,7 +1,21 @@
 #BlueJ class context
 comment0.target=MyWorld
-comment1.params=
-comment1.target=MyWorld()
-comment2.params=
-comment2.target=void\ placeRandomObjects()
-numComments=3
+comment1.params=valorInicial
+comment1.target=MyWorld(int)
+comment2.params=valor
+comment2.target=void\ reducirTiempo(int)
+comment3.params=
+comment3.target=void\ actualizarTexto()
+comment4.params=
+comment4.target=void\ contarBitPrendidos()
+comment5.params=
+comment5.target=void\ actualizarBitsEnEscenario()
+comment6.params=
+comment6.target=int[]\ getContadores()
+comment7.params=
+comment7.target=void\ inicioObstaculos()
+comment8.params=
+comment8.target=void\ moverObstaculosAbajo()
+comment9.params=
+comment9.target=void\ act()
+numComments=10

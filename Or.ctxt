@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Or
+comment1.params=
+comment1.target=void\ act()
+comment2.params=filaSeleccionada
+comment2.target=void\ copiarFila(int)
+numComments=3
